@@ -17,6 +17,9 @@ const urlEncoded = parser.urlencoded({ extended : false})
 app.get('', (req, res)=>{
     res.render('index')
 })
+app.get('/main', (req, res)=>{
+    res.render('mainActivity')
+})
 app.post('/signUp', urlEncoded, (req, res)=>{
     const user = req.query.user
     const pass = req.query.pass
@@ -38,7 +41,23 @@ app.post('/signUp', urlEncoded, (req, res)=>{
         }
     })
     .then(err => console.log(err))
+})
+app.post('/login', urlEncoded, (req, res)=>{
+    const user = req.query.user
+    const pass = req.query.pass
     
+    const db = dbService.getDbServiceInstance()
+
+    const checkUser = db.checkUser(user)
+    checkUser
+    .then(data => {
+        if(data.length === 0){
+            res.json({user : false})
+        }else{
+            res.json({user : data})
+        }
+    })
+    .then(err => console.log(err))
 })
 
 app.listen(port, () => console.info(`Listening on port ${port}`))

@@ -16,6 +16,7 @@ p, h1, h2, button{
     background:rgba(0,0,0,0.5);
     display:none;
 }
+/*index page*/
 .index-container{
     width: 100%;
     height: 100%;
@@ -83,6 +84,7 @@ p, h1, h2, button{
 .index-right-btn:hover{
     font-size: 22px;
 }
+/*login and signUp pop up box*/
 .login-popUp{
     width: 500px;
     height: 300px;
@@ -179,3 +181,5 @@ p, h1, h2, button{
     cursor: pointer;
     padding-right: 20px;
 }
+
+/*mainActivity page*/
