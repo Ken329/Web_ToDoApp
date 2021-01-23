@@ -11,6 +11,7 @@ app.use('/js', express.static(__dirname + 'public/js'))
 
 app.set('views', './views')
 app.set('view engine' , 'ejs')
+var user = ""
 
 const urlEncoded = parser.urlencoded({ extended : false})
 
@@ -18,7 +19,11 @@ app.get('', (req, res)=>{
     res.render('index')
 })
 app.get('/main', (req, res)=>{
+    user = req.query.user
     res.render('mainActivity')
+})
+app.get('/getUserName', (req, res)=>{
+    res.json({data : user})
 })
 app.post('/signUp', urlEncoded, (req, res)=>{
     const user = req.query.user
