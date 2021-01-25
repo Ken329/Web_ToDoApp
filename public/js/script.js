@@ -9,7 +9,7 @@ const btnLogin = document.getElementById('login_log')
 //indexs
 const loginPop = document.getElementById('login_pop')
 const signupPop = document.getElementById('signUp_pop')
-const blur = document.getElementsByClassName('blur')[0]
+var blur = document.getElementsByClassName('blur')[0]
 
 // error messages
 const errorUser = document.getElementById('error_signup_user')
@@ -53,10 +53,10 @@ loginCancel.addEventListener('click', function(){
     blur.style.display = 'none'
 })
 btnLogin.addEventListener('click', function(){
-    const height = loginPop.clientHeight
-    const check = true
-    const username = document.getElementById('login_username').value
-    const password = document.getElementById('login_password').value
+    var height = loginPop.clientHeight
+    var check = true
+    var username = document.getElementById('login_username').value
+    var password = document.getElementById('login_password').value
     fetch('http://localhost:3000/login?user='+username+'&pass='+password, {
         method: 'POST'
     })
@@ -93,12 +93,12 @@ signUpCancel.addEventListener('click', function(){
     blur.style.display = 'none'
 })
 btnSignUp.addEventListener('click', function(){
-    const check = true
-    const height = signupPop.clientHeight
-    const user = document.getElementById('signUp_username').value
-    const pass = document.getElementById('signUp_password').value
-    const phone = document.getElementById('signUp_phone').value
-    const birth = document.getElementById('signUp_birth').value
+    var check = true
+    var height = signupPop.clientHeight
+    var user = document.getElementById('signUp_username').value
+    var pass = document.getElementById('signUp_password').value
+    var phone = document.getElementById('signUp_phone').value
+    var birth = document.getElementById('signUp_birth').value
     if(user.length < 6){
         width += 45
         signupPop.style.height = height+"px"

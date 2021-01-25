@@ -64,5 +64,25 @@ app.post('/login', urlEncoded, (req, res)=>{
     })
     .then(err => console.log(err))
 })
+app.post('/addPost', urlEncoded, (req, res)=>{
+    const title = req.query.title
+    const desc = req.query.desc
+    const date = req.query.date
+    const time = req.query.time
+    const currDate = req.query.currDate
+
+    const db = dbService.getDbServiceInstance()
+    const result = db.addPost(title, desc, date, time, currDate, user)
+    result
+    .then(data => res.json({success: true}))
+    .then(err => console.log(err))
+})
+app.get('/getPostData', (req, res)=>{
+    const db = dbService.getDbServiceInstance()
+    const result = db.getAllPost(user)
+    result
+    .then(data => res.json({data : data}))
+    .then(err => console.log(err))
+})
 
 app.listen(port, () => console.info(`Listening on port ${port}`))

@@ -63,5 +63,33 @@ class dbService{
             console.log(error)
         }
     }
+    async addPost(title, desc, date, time, currDate, user){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = 'INSERT INTO `post`(`post_name`, `post_title`, `post_desc`, `post_date`, `post_time`, `post_current`) VALUES (?,?,?,?,?,?)'
+                connection.query(query, [user, title, desc, date, time, currDate],(err, result)=>{
+                    if(err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async getAllPost(user){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "select * from post where post_name = '"+user+"'"
+                connection.query(query, (err, result)=>{
+                    if (err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 module.exports = dbService

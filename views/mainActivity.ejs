@@ -9,18 +9,26 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="mainBlur"></div>
     <header class="main-header-container">
-        <div class="main-header-div">
+        <div id="header_title" class="main-header-div">
             <i class="fas fa-3x fa-th-list"></i>
             <h2 class="main-title">To Do App</h2>
         </div>
-        <div class="main-header-div">
+        <div id="header_function" class="main-header-div">
             <div class="main-function">
                 <div id="task_lay" class="main-function-divP">
                     <i class="fas fa-tasks"></i>
                     <p id="task_p" class="main-function-p">Tasks</p>
                 </div>
                 <div id="task_div" class="main-function-div"></div>
+            </div>
+            <div class="main-function">
+                <div id="add_lay" class="main-function-divP">
+                    <i class="fas fa-plus-circle"></i>
+                    <p id="add_p" class="main-function-p">Add Tasks</p>
+                </div>
+                <div id="add_div" class="main-function-div"></div>
             </div>
             <div class="main-function">
                 <div id="edit_lay" class="main-function-divP">
@@ -40,6 +48,29 @@
     </header>
     <div class="main-body-container">
         <p id="main_body_welcome"></p>
+        <div id="add_container" class="main-add-container">
+            <div class="main-add-title">Add Tasks</div>
+            <input id="add_title" type="text" class="main-add-input" placeholder="Title">
+            <input id="add_desc" type="text" class="main-add-input" placeholder="Describe">
+            <input id="add_date" type="text" class="main-add-input" placeholder="Date: DD/MM/YYYY">
+            <input id="add_time" type="text" class="main-add-input" placeholder="Time">
+            <div class="main-add-btn-container">
+                <button id="add_cancel" class="main-add-btn">Cancel</button>
+                <button id="add_add" class="main-add-btn">Add</button>
+            </div>
+        </div>
+
+        <div id="task_container" class="my-task-container">
+            <div class="my-task">
+                <p class="my-task-current">post Date</p>
+                <div class="my-task-title">Title</div>
+                <div class="my-task-desc">describstion</div>
+                <div class="my-task-dateTime">
+                    <div class="my-task-date">date</div>
+                    <div class="my-task-time">time</div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/mainScript.js"></script>
 </body>
