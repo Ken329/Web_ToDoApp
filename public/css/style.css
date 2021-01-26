@@ -216,7 +216,7 @@ p, h1, h2, button{
     margin: 10px;
 }
 .main-function{
-    width: 25%;
+    width: 33.33%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -264,8 +264,9 @@ p, h1, h2, button{
     height: 500px;
     border: 3px solid turquoise;
     border-radius: 30px;
+    border: 4px solid turquoise;
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 26%;
     background-color: white;
     flex-direction: column;
@@ -273,10 +274,10 @@ p, h1, h2, button{
     display: none;
 }
 .main-add-title{
-    width: 100%;
+    width: 99%;
     height: 40px;
     background-color: turquoise;
-    border-radius: 30px;
+    border-radius: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -324,19 +325,38 @@ p, h1, h2, button{
     justify-content: center;
     justify-items: center;
     align-items: center;
+    font-size: 18px;
 }
 .my-task{
     width: 500px;
     height: 200px;
     margin: 20px;
+    color: white;
     background-color: turquoise;
-    position: relative;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
 }
+.my-task-currentEdit{
+    width: 100%;
+    height: 30px;
+    display: flex;
+}
 .my-task-current{
-    margin-left: 20px;
+    width: 50%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+.my-task-edit{
+    width: 50%;
+    text-align: end;
+    padding-right: 20px;
+}
+.my-task-edit i{
+    cursor: pointer;
 }
 .my-task-title{
     width: 200px;
@@ -345,6 +365,8 @@ p, h1, h2, button{
     margin-right: auto;
     background-color: #73D5F3;
     display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 1px 15px 5px #37C5F1;
     align-items: center;
     justify-items: center;
     justify-content: center;
@@ -352,6 +374,7 @@ p, h1, h2, button{
 }
 .my-task-desc{
     width: 90%;
+    height: 90px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -361,8 +384,6 @@ p, h1, h2, button{
     align-items: center;
 }
 .my-task-dateTime{
-    position: absolute;
-    bottom: 0;
     display: flex;
     width: 100%;
     height: 30px;
@@ -376,6 +397,17 @@ p, h1, h2, button{
     justify-items: center;
     justify-content: center;
     align-items: center;
+}
+.main-edit-input{
+    width: 80%;
+    height: 30px;
+    border: 1px solid turquoise;
+    border-radius: 10px;
+    padding: 20px;
+    outline: none;
+}
+.main-edit-p{
+    margin-top: 15px;
 }
 @media screen and (max-width: 1100px){
     #header_title{

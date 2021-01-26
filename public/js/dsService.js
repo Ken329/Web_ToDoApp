@@ -66,8 +66,8 @@ class dbService{
     async addPost(title, desc, date, time, currDate, user){
         try{
             const response = await new Promise((resolve, reject)=>{
-                const query = 'INSERT INTO `post`(`post_name`, `post_title`, `post_desc`, `post_date`, `post_time`, `post_current`) VALUES (?,?,?,?,?,?)'
-                connection.query(query, [user, title, desc, date, time, currDate],(err, result)=>{
+                const query = 'INSERT INTO `post`(`post_name`, `post_title`, `post_desc`, `post_date`, `post_time`, `post_current`, `post_id`) VALUES (?,?,?,?,?,?,?)'
+                connection.query(query, [user, title, desc, date, time, currDate, null],(err, result)=>{
                     if(err) throw err
                     resolve(result)
                 })
@@ -83,6 +83,34 @@ class dbService{
                 const query = "select * from post where post_name = '"+user+"'"
                 connection.query(query, (err, result)=>{
                     if (err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async getPostIdData(id){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "select * from post where post_id = '"+id+"'"
+                connection.query(query, (err, result)=>{
+                    if (err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async editPost(title, desc, date, time, id){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = 'UPDATE `post` SET `post_title`=?,`post_desc`=?,`post_date`=?,`post_time`=? WHERE post_id = ?'
+                connection.query(query, [title, desc, date, time, id], (err, result)=>{
+                    if(err) throw err
                     resolve(result)
                 })
             })

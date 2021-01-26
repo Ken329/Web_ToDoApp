@@ -82,7 +82,29 @@ app.get('/getPostData', (req, res)=>{
     const result = db.getAllPost(user)
     result
     .then(data => res.json({data : data}))
-    .then(err => console.log(err))
+    .then(err => err)
+})
+app.get('/getPostIdData', (req, res)=>{
+    const id = req.query.id
+
+    const db = dbService.getDbServiceInstance()
+    const result = db.getPostIdData(id)
+    result
+    .then(data => res.json({data : data}))
+    .then(err => err)
+})
+app.patch('/editPost', urlEncoded, (req, res)=>{
+    const title = req.query.title
+    const desc = req.query.desc
+    const date = req.query.date
+    const time = req.query.time
+    const id = req.query.id
+
+    const db = dbService.getDbServiceInstance()
+    const result = db.editPost(title, desc, date, time, id)
+    result
+    .then(data => res.json({success : true}))
+    .then(err => err)
 })
 
 app.listen(port, () => console.info(`Listening on port ${port}`))

@@ -17,25 +17,11 @@
         </div>
         <div id="header_function" class="main-header-div">
             <div class="main-function">
-                <div id="task_lay" class="main-function-divP">
-                    <i class="fas fa-tasks"></i>
-                    <p id="task_p" class="main-function-p">Tasks</p>
-                </div>
-                <div id="task_div" class="main-function-div"></div>
-            </div>
-            <div class="main-function">
                 <div id="add_lay" class="main-function-divP">
                     <i class="fas fa-plus-circle"></i>
                     <p id="add_p" class="main-function-p">Add Tasks</p>
                 </div>
                 <div id="add_div" class="main-function-div"></div>
-            </div>
-            <div class="main-function">
-                <div id="edit_lay" class="main-function-divP">
-                    <i class="fas fa-edit"></i>
-                    <p id="edit_p" class="main-function-p">Edit Tasks</p>
-                </div>
-                <div id="edit_div" class="main-function-div"></div>
             </div>
             <div class="main-function">
                 <div id="profile_lay" class="main-function-divP">
@@ -44,10 +30,21 @@
                 </div>
                 <div id="profile_div" class="main-function-div"></div>
             </div>
+            <div class="main-function">
+                <div id="task_lay" class="main-function-divP">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p id="task_p" class="main-function-p">Log Out</p>
+                </div>
+                <div id="task_div" class="main-function-div"></div>
+            </div>
         </div>
     </header>
     <div class="main-body-container">
         <p id="main_body_welcome"></p>
+        <div id="task_container" class="my-task-container">
+            
+        </div>
+
         <div id="add_container" class="main-add-container">
             <div class="main-add-title">Add Tasks</div>
             <input id="add_title" type="text" class="main-add-input" placeholder="Title">
@@ -59,19 +56,23 @@
                 <button id="add_add" class="main-add-btn">Add</button>
             </div>
         </div>
-
-        <div id="task_container" class="my-task-container">
-            <div class="my-task">
-                <p class="my-task-current">post Date</p>
-                <div class="my-task-title">Title</div>
-                <div class="my-task-desc">describstion</div>
-                <div class="my-task-dateTime">
-                    <div class="my-task-date">date</div>
-                    <div class="my-task-time">time</div>
-                </div>
+        <div id="edit_container" class="main-add-container">
+            <div class="main-add-title">Edit Tasks</div>
+            <p class="main-edit-p">Title</p>
+            <input id="edit_title" type="text" class="main-edit-input" placeholder="Title">
+            <p class="main-edit-p">Description</p>
+            <input id="edit_desc" type="text" class="main-edit-input" placeholder="Describe">
+            <p class="main-edit-p">Date</p>
+            <input id="edit_date" type="text" class="main-edit-input" placeholder="Date: DD/MM/YYYY">
+            <p class="main-edit-p">Time</p>
+            <input id="edit_time" type="text" class="main-edit-input" placeholder="Time">
+            <div class="main-add-btn-container">
+                <button id="edit_cancel" class="main-add-btn">Cancel</button>
+                <button id="edit_add" class="main-add-btn">Edit</button>
             </div>
         </div>
     </div>
+
     <script src="js/mainScript.js"></script>
 </body>
 </html>
