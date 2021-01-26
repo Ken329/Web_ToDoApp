@@ -106,5 +106,14 @@ app.patch('/editPost', urlEncoded, (req, res)=>{
     .then(data => res.json({success : true}))
     .then(err => err)
 })
+app.delete('/deletePost', (req, res)=>{
+    const id = req.query.id
+
+    const db = dbService.getDbServiceInstance()
+    const result = db.deletePost(id)
+    result
+    .then(data => res.json({success : true}))
+    .then(err => err)
+})
 
 app.listen(port, () => console.info(`Listening on port ${port}`))

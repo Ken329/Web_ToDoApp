@@ -137,7 +137,12 @@ function putPostData(data){
 }
 // edit and delete post data
 document.getElementById('task_container').addEventListener('click', function(event){
-    editPost(event.target.dataset.id)
+    if(event.target.className === "fas fa-edit"){
+        editPost(event.target.dataset.id)
+    }
+    if(event.target.className === "fas fa-trash-alt"){
+        deletePost(event.target.dataset.id)
+    }
 })
 function editPost(id){
     myId = id
@@ -184,3 +189,14 @@ addEdit.addEventListener('click', function(){
         }
     })
 })
+function deletePost(id){
+    fetch('http://localhost:3000/deletePost?id='+id, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            location.reload()
+        }
+    })
+}

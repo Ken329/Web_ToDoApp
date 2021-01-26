@@ -119,5 +119,19 @@ class dbService{
             console.log(error)
         }
     }
+    async deletePost(id){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "delete from post where post_id = '"+id+"'"
+                connection.query(query, (err, result)=>{
+                    if(err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 module.exports = dbService
