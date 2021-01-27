@@ -133,5 +133,33 @@ class dbService{
             console.log(error)
         }
     }
+    async getProfileData(user){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "select * from user where user_name = '"+user+"'"
+                connection.query(query, (err, result)=>{
+                    if(err) throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async editProfileData(user, pass, phone, birth){
+        try{
+            const response = await new Promise((resolve, reject)=>{
+                const query = "UPDATE `user` SET `user_password`=?,`user_phone`=?,`user_birth`=? WHERE user_name =?"
+                connection.query(query, [pass, phone, birth, user], (err, result)=>{
+                    if(err)throw err
+                    resolve(result)
+                })
+            })
+            return response
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 module.exports = dbService

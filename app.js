@@ -115,5 +115,25 @@ app.delete('/deletePost', (req, res)=>{
     .then(data => res.json({success : true}))
     .then(err => err)
 })
+app.get('/getProfileData', (req, res)=>{
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getProfileData(user)
+    result
+    .then(data => res.json({data : data}))
+    .then(err => err)
+})
+app.post('/editProfileData',  urlEncoded, (req, res)=>{
+    const user = req.query.user
+    const pass = req.query.pass
+    const phone = req.query.phone
+    const birth = req.query.birth
+
+    const db = dbService.getDbServiceInstance()
+    const result = db.editProfileData(user, pass, phone, birth)
+    result
+    .then(data => res.json({success : true}))
+    .then(err => console.log(err))
+})
 
 app.listen(port, () => console.info(`Listening on port ${port}`))

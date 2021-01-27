@@ -19,6 +19,19 @@ function scroolTop(){
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
 }
+var btnSide = document.getElementById('side_menu')
+var btnSideCancel = document.getElementById('side_cancel')
+var sideLay = document.getElementById('side_menu_container')
+btnSide.addEventListener('click', function(){
+    btnSideCancel.style.display = 'block'
+    btnSide.style.display = 'none'
+    sideLay.style.display = 'block'
+})
+btnSideCancel.addEventListener('click', function(){ 
+    btnSide.style.display = 'block'
+    btnSideCancel.style.display = 'none'
+    sideLay.style.display = 'none'
+})
 
 logoutLayout.addEventListener('mouseover', function(){
     logoutLayout.style.marginTop = "94px"
@@ -69,6 +82,14 @@ function checkDate(date){
 }
 
 // add data 
+document.getElementById('add_side').addEventListener('click', function(){
+    sideLay.style.display = 'none'
+    btnSideCancel.style.display = 'none'
+    btnSide.style.display = 'block'
+    scroolTop()
+    addContainer.style.display = 'flex'
+    blur.style.display = 'block'
+})
 document.getElementById('add_p').addEventListener('click', function(){
     scroolTop()
     addContainer.style.display = 'flex'
@@ -100,8 +121,68 @@ addAdd.addEventListener('click', function(){
         alert("Invalid date pattern, please check")
     }
 })
+// profile
+var profileContainer = document.getElementById('profile_container')
+var profileCancel = document.getElementById('profile_cancel')
+var profileEdit = document.getElementById('profile_edit')
+
+var inputName = document.getElementById('profile_name')
+var inputPassword = document.getElementById('profile_pass')
+var inputPhone = document.getElementById('profile_phone')
+var inputBirth = document.getElementById('profile_birth')
+document.getElementById('profile_p').addEventListener('click', function(){
+    scroolTop()
+    profileContainer.style.display = 'flex'
+    blur.style.display = 'block'
+    getProfileData()
+})
+profileCancel.addEventListener('click', function(){
+    profileContainer.style.display = 'none'
+    blur.style.display = 'none'
+})
+function getProfileData(){
+    fetch('http://localhost:3000/getProfileData', {
+        method: "GET"
+    })
+    .then(res => res.json())
+    .then(data => putProfileData(data['data']))
+}
+function putProfileData(data){
+    inputName.value = data[0].user_name
+    inputPassword.value = data[0].user_password
+    inputPhone.value = data[0].user_phone
+    inputBirth.value = data[0].user_birth
+}
+profileEdit.addEventListener('click', function(){
+    var user = inputName.value
+    var pass = inputPassword.value
+    var phone = inputPhone.value
+    var birth = inputBirth.value
+
+    if(pass.length < 6){
+        alert('Password must be more than 6 characters')
+        return
+    }
+    if(checkDate(birth)){
+        fetch('http://localhost:3000/editProfileData?user='+user+'&pass='+pass+'&phone='+phone+'&birth='+birth, {
+            method:"POST"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                location.reload()
+            }
+        })
+    }else{
+        alert('Invalid birth date, please check')
+        return
+    }
+})
 // logout 
 document.getElementById('task_p').addEventListener('click', function(){
+    window.location.href = '/'
+})
+document.getElementById('task_side').addEventListener('click', function(){
     window.location.href = '/'
 })
 // put post data 

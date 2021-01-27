@@ -245,6 +245,45 @@ p, h1, h2, button{
     transition: .3s ease-out;
     display: none;
 }
+.side-menu-div{
+    width: 60%;
+    text-align: end;
+    margin-top: 40px;
+    margin-right: 20px;
+    display: none;
+}
+#side_menu{
+    cursor: pointer;
+}
+#side_cancel{
+    cursor: pointer;
+    display: none;
+}
+.side-menu-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: turquoise;
+    transition: .5s ease-out;
+    display: none;
+}
+.side-menu-function-div{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.side-menu-function-div i,  .side-menu-function-div p{
+    padding: 10px;
+} 
+.side-menu-function-div:hover{
+    box-shadow: 0px 1px 15px 5px #37C5F1;
+}
 .main-body-container{
     width: 100%;
     display: flex;
@@ -409,7 +448,57 @@ p, h1, h2, button{
 .main-edit-p{
     margin-top: 15px;
 }
-@media screen and (max-width: 1100px){
+.user-edit-div{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: turquoise;
+    margin-top: 10px;
+    display: flex;
+}
+.user-edit-div i{
+    color: white;
+    margin-left: 18px;
+    margin-top: 10px;
+}
+.main-profile-input{
+    width: 80%;
+    height: 40px;
+    border: 1px solid turquoise;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.main-profile-p{
+    margin-top: 10px;
+}
+.main-profile-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.main-profile-btn{
+    width: 100px;
+    height: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: turquoise;
+    cursor: pointer;
+}
+#profile_cancel:hover{
+    border: 1px solid red;
+}
+#profile_edit:hover{
+    border: 1px solid black;
+}
+@media (min-width: 899px) and (max-width: 1100px){
     #header_title{
         width: 40%;
     }
@@ -417,6 +506,16 @@ p, h1, h2, button{
         width: 60%;
     }
 }
-@media screen and (max-width: 900px){
-
+@media (min-width: 779px) and (max-width: 900px){
+    .side-menu-container{
+        display: none;
+    }
+}
+@media screen and (max-width: 780px){
+    #header_function{
+        display: none;
+    }
+    .side-menu-div{
+        display: block;
+    }
 }
